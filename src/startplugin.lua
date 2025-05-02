@@ -112,6 +112,7 @@ function ssf:startplugin()
             screen:draw_box(0, 0, screen.width, screen.height, 0x00000000, 0xff000000)
           end
         end
+        video.frameskip = 11
 
         -- Iterate frame count when not paused
         if not manager.machine.paused then
@@ -129,6 +130,7 @@ function ssf:startplugin()
 
           -- Reset throttle rate
           video.throttle_rate = 1
+          video.frameskip = 0
 
           -- Reset frame processing function to do nothing when frame target is reached
           process_frame = function() end
