@@ -172,7 +172,7 @@ function ssf:startplugin()
     stopNotifier = emu.add_machine_stop_notifier(stop)
     menuNotifier = emu.register_menu(menu_callback, menu_populate, _p("plugin-skipstartupframes", "Skip Startup Frames"))
 
-  -- MAME 0.227 and newer compatibility check
+  -- otherwise MAME 0.227 and newer compatibility check
   elseif tonumber(emu.app_version()) >= 0.227 then
    	emu.register_start(function()
 		startNotifier = True
@@ -182,7 +182,7 @@ function ssf:startplugin()
 		stopNotifier = True
         stop()
 	end)
-    menuNotifier = emu.register_menu(menu_callback, menu_populate)
+    menuNotifier = emu.register_menu(menu_callback, menu_populate, "Skip Startup Frames")
 
   else
     ---- MAME version not compatible (probably can"t even load LUA plugins anyways)
